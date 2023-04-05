@@ -1,6 +1,7 @@
 package ru.danil42russia.backend.base
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import io.zonky.test.db.AutoConfigureEmbeddedDatabase
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.test.annotation.DirtiesContext
@@ -8,6 +9,10 @@ import org.springframework.test.web.servlet.MockHttpServletRequestDsl
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.result.ContentResultMatchersDsl
 
+@AutoConfigureEmbeddedDatabase(
+    provider = AutoConfigureEmbeddedDatabase.DatabaseProvider.ZONKY,
+    refresh = AutoConfigureEmbeddedDatabase.RefreshMode.AFTER_EACH_TEST_METHOD
+)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 internal abstract class IntegrationControllerTest {
 

@@ -12,7 +12,7 @@ import ru.danil42russia.backend.base.IntegrationControllerTest
 import ru.danil42russia.backend.model.Bank
 
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 internal class BankControllerTest : IntegrationControllerTest() {
     private val baseUrl = "/api/banks"
 
